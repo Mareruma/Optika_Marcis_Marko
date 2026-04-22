@@ -46,7 +46,7 @@ function update() {
     koeficients = H / h;
 
     attela_augsa = 200 + H;
-    attela_apaksa = attela_augsa + garums * koeficients;
+    attela_apaksa = attela_augsa - garums * koeficients;
 
     // Asis
     strokeWeight(1);
