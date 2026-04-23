@@ -1,6 +1,7 @@
 // https://github.com/Mareruma/Optika_Marcis
 
 // https://www.w3schools.com/CSS//css_padding.asp
+// https://www.w3schools.com/jsref/jsref_abs.asp
 // https://phet.colorado.edu/sims/html/geometric-optics/latest/geometric-optics_all.html
 // https://p5js.org/reference/p5/text/
 // https://p5js.org/reference/p5/round/
@@ -13,6 +14,13 @@ let garums, platums;
 let koeficients;
 let attela_apaksa, attela_augsa, attela_augstums;
 let kermenis, attels;
+let zimulisImg;
+let lielumsX, lielumsY; // ķermenim
+let lielumsXa, lielumsYa; // attēlam
+
+function preload() {
+    zimulisImg = loadImage("pencil.jpg");
+}
 
 function setup() {
     new Canvas(400, 500);
@@ -22,6 +30,9 @@ function setup() {
     F = 50;
     platums = 20;
     garums = 50;
+
+    kermenis.img = zimulisImg;
+    attels.img = zimulisImg;
 }
 
 function update() {
@@ -97,20 +108,27 @@ function update() {
 
     kermenis.x = x;
     kermenis.y = y + garums /2;
-    kermenis.w = platums;
-    kermenis.h = garums;
+    // kermenis.w = platums;
+    // kermenis.h = garums;
+    // lielumsX = kermenis.w / zimulisImg.width;
+    // lielumsY = kermenis.h / zimulisImg.height;
     kermenis.physics = KINEMATIC;
+    kermenis.scale = garums / zimulisImg.height;
 
     // // Attēla līnija
     // strokeWeight(3);
     // stroke("gray");
     // line(200 + f, attela_apaksa, 200 + f, attela_augsa);
-    attela_augstums = attela_apaksa - attela_augsa;
+    attela_augstums = garums * koeficients;
     attels.x = 200 + f;
-    attels.y = attela_augsa + attela_augstums / 2;
-    attels.w = platums * koeficients;
-    attels.h =  attela_augstums;
+    attels.y = attela_augsa - attela_augstums / 2;
+    // attels.w = abs(platums * koeficients);
+    // attels.h =  attela_augstums;
+    // lielumsXa = attels.w / zimulisImg.width;
+    // lielumsYa = attels.h / zimulisImg.height;
+    attels.scale = attela_augstums / zimulisImg.height;
     attels.physics = KINEMATIC;
+    attels.rotation = 180;
 
 
     // Mērvienību rādīšana
