@@ -17,6 +17,7 @@ let kermenis, attels;
 let zimulisImg;
 let lielumsX, lielumsY; // ķermenim
 let lielumsXa, lielumsYa; // attēlam
+let parveidojums;
 
 function preload() {
     zimulisImg = loadImage("pencil.jpg");
@@ -30,6 +31,7 @@ function setup() {
     F = 50;
     platums = 40;
     garums = 100;
+    parveidojums = 100;
 
     kermenis.img = zimulisImg;
     attels.img = zimulisImg;
@@ -120,14 +122,14 @@ function update() {
     rect(0, 400, 405, 105);
     strokeWeight(0);
     textSize(15);
-    text("F = "+ F / 10 + "m", 10, 415);
-    text("d = " + d / 10 + "m", 10, 430);
-    text("f = " + round(f / 10, 2) + "m", 10, 445);
-    text("H = " + round(H / 10, 2) + "m", 10, 460);
-    text("h = " + round(h / 10, 2) + "m", 10, 475);
+    text("F = "+ F / parveidojums + "m", 10, 415);
+    text("d = " + d / parveidojums + "m", 10, 430);
+    text("f = " + round(f / parveidojums, 2) + "m", 10, 445);
+    text("H = " + round(H / parveidojums, 2) + "m", 10, 460);
+    text("h = " + round(h / parveidojums, 2) + "m", 10, 475);
 
-    text("x = " + x + "m", 210, 415);
-    text("y = " + round(y, 2) + "m", 210, 430);
-    text("1m = 10px", 210, 475);
+    text("x = " + x / parveidojums + "m", 210, 415);
+    text("y = " + round(y / parveidojums, 2) + "m", 210, 430);
+    text("1m = " + parveidojums + "px", 210, 475);
 
 }
